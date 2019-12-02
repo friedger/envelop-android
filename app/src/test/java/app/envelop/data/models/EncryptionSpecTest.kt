@@ -3,6 +3,7 @@ package app.envelop.data.models
 import app.envelop.data.security.Pbkdf2AesEncryptionSpec
 import app.envelop.data.toInnerJsonObject
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import org.junit.Assert.*
 import org.junit.Test
@@ -13,14 +14,14 @@ class EncryptionSpecTest {
   fun unknownType() {
     assertNull(
       Pbkdf2AesEncryptionSpec.fromJson(
-        JsonParser().parse(
+        Gson().fromJson(
           """
           {
             "type": "unknown",
             "params": {}
           }
-          """
-        ).toInnerJsonObject()!!
+          """, JsonObject::class.java
+        ).toInnerJsonObject()
       )
     )
   }
@@ -28,7 +29,7 @@ class EncryptionSpecTest {
   @Test
   fun pbkdf2Aes_parsing() {
     val spec = Pbkdf2AesEncryptionSpec.fromJson(
-      JsonParser().parse(
+      JsonParser.parseString(
         """
              {
                "type": "PBKDF2/AES",
@@ -50,7 +51,7 @@ class EncryptionSpecTest {
 
   @Test
   fun pbkdf2Aes_keepUnknownValues() {
-    val baseJson = JsonParser().parse(
+    val baseJson = JsonParser.parseString(
       """
              {
                "type": "PBKDF2/AES",

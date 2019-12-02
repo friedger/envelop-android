@@ -4,19 +4,16 @@ import android.content.Context
 import android.content.res.Resources
 import android.os.Handler
 import android.os.HandlerThread
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import app.envelop.R
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
-import org.blockstack.android.sdk.BaseScope
-import org.blockstack.android.sdk.BlockstackSession
-import org.blockstack.android.sdk.ISessionStore
-import org.blockstack.android.sdk.SessionStore
+import org.blockstack.android.sdk.*
 import org.blockstack.android.sdk.model.BlockstackConfig
-import java.net.URI
 import javax.inject.Named
+import java.net.URI
 import javax.inject.Singleton
 
 @Module

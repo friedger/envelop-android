@@ -1,14 +1,9 @@
-package app.envelop
+package app.envelop.data.security
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import app.envelop.data.security.Base64Encoder
-import app.envelop.data.security.KeyGenerator
-import app.envelop.data.security.Pbkdf2AesEncrypter
-import app.envelop.data.security.Pbkdf2AesEncryptionSpec
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
-import timber.log.Timber
 
 @RunWith(AndroidJUnit4::class)
 class EncrypterTest {
